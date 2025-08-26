@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Application.Commands.Product;
 using Ecommerce.Application.Queries.Product;
+using Ecommerce.Application.Queries.Order;
 using Ecommerce.Domain;
 using Ecommerce.Domain.OrderAggregate;
 using Ecommerce.Domain.OrderItemAggregate;
@@ -8,7 +9,7 @@ using Ecommerce.Domain.UserAggregate;
 using Ecommerce.ReadModels.Dtos;
 using ECommerce.Infra.Data;
 using ECommerce.Infra.Data.Repositories;
-using ECommerce.Infra.ServiceBus.Publishers;
+//using ECommerce.Infra.ServiceBus.Publishers;
 using ECommerce.Infra.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +40,7 @@ namespace ECommerce.Infra.CrossCutting.IoC
             // Handlers - Queries
             services.AddScoped<GetAllProductsQueryHandler>();
             services.AddScoped<GetProductByIdQueryHandler>();
+            services.AddScoped<GetOrderByIdQueryHandler>();
 
             // Mongo
             services.AddSingleton(sp =>
@@ -59,7 +61,8 @@ namespace ECommerce.Infra.CrossCutting.IoC
             services.AddSingleton<IMongoClient>(_ =>
                 new MongoClient(settings.ConnectionStrings.MongoConnection));
 
-            services.AddSingleton<IServiceBusPublisher, ServiceBusPublisher>();
+            // TODO: Re-enable when ServiceBus is fixed
+            //services.AddSingleton<IServiceBusPublisher, ServiceBusPublisher>();
         }
 
 

@@ -13,18 +13,18 @@ namespace ECommerce.Infra.Data.MapEntities.Seeds
                     Id = 1,
                     OrderId = 1,
                     ProductId = 1,
-                    ProductName = "Notebook Dell Inspiron",
-                    Quantity = 1,
-                    UnitPrice = 4500.00m
+                    ProductName = "Product A",
+                    Quantity = 2,
+                    UnitPrice = 50.00m
                 },
                 new OrderItemDomain
                 {
                     Id = 2,
                     OrderId = 1,
                     ProductId = 3,
-                    ProductName = "Fone Bluetooth JBL",
-                    Quantity = 2,
-                    UnitPrice = 299.90m
+                    ProductName = "Product B",
+                    Quantity = 1,
+                    UnitPrice = 50.75m
                 },
                 new OrderItemDomain
                 {

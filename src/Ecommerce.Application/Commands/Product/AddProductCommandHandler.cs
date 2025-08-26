@@ -1,11 +1,11 @@
 ﻿using Ecommerce.Domain.ProductAggregate;
 using Ecommerce.ReadModels.Dtos;
-using ECommerce.Infra.ServiceBus.Publishers;
+//using ECommerce.Infra.ServiceBus.Publishers;
 using System.Text.Json;
 
 namespace Ecommerce.Application.Commands.Product
 {
-    public class AddProductCommandHandler(IProductRepository productRepository, IServiceBusPublisher busPublisher)
+    public class AddProductCommandHandler(IProductRepository productRepository /*, IServiceBusPublisher busPublisher*/)
     {
         public async Task<ProductDto> Handle(AddProductCommand command)
         {
@@ -19,6 +19,8 @@ namespace Ecommerce.Application.Commands.Product
 
             await productRepository.InsertOrUpdateAsync(product);
 
+            // TODO: Re-enable service bus when fixed
+            /*
             var message = JsonSerializer.Serialize(new
             {
                 product.Id,
@@ -28,6 +30,7 @@ namespace Ecommerce.Application.Commands.Product
             });
 
             busPublisher.PublishToDirect(message, routingKey: "product.created", exchange: "product.direct");
+            */
 
             return new ProductDto
             {

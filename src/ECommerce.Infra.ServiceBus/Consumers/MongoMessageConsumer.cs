@@ -10,7 +10,7 @@ public abstract class MongoMessageConsumer<T> : BackgroundService, IMessageConsu
 {
     protected readonly IMongoCollection<T> _collection;
     private readonly string _queueName;
-    private IModel _channel;
+    private IChannel _channel;
     private IConnection _connection;
 
     protected MongoMessageConsumer(IMongoCollection<T> collection, string queueName)
@@ -20,7 +20,7 @@ public abstract class MongoMessageConsumer<T> : BackgroundService, IMessageConsu
 
         var factory = new ConnectionFactory { HostName = "localhost" };
         _connection = factory.CreateConnection();
-        _channel = _connection.CreateModel();
+        _channel = _connection.CreateChannel();
 
         _channel.QueueDeclare(
             queue: _queueName,

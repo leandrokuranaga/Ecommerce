@@ -27,4 +27,10 @@
     <Folder Include="4. Infra Layer Tests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ecommerce.Application\Ecommerce.Application.csproj" />
+    <ProjectReference Include="..\Ecommerce.Domain\Ecommerce.Domain.csproj" />
+    <ProjectReference Include="..\ECommerce.ReadModels\ECommerce.ReadModels.csproj" />
+  </ItemGroup>
+
 </Project>

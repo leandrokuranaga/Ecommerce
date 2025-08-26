@@ -13,8 +13,8 @@ namespace ECommerce.Infra.Data.MapEntities.Seeds
                 new OrderDomain
                 {
                     Id = 1,
-                    CreatedAt = new DateTime(2025, 4, 1),
-                    Status = "Completed",
+                    CreatedAt = new DateTime(2023, 10, 26),
+                    Status = "Processing",
                     UserId = 1
                 },
                 new OrderDomain
